@@ -6,6 +6,7 @@
 <h2><%= @cocktail.name %></h2>
 <%= cl_image_tag(@cocktail.photo.key, height: 300, width: 400, crop: :fill) %>
 <br>
+<br>
 <ul class="list">
 <% @doses.each do |dose| %>
  <li class="list-item"><p><%= Ingredient.find(dose.ingredient_id).name %> - <%= dose.description %></p>    <%= link_to "delete", dose_path(dose[:id]), method: :delete, data: { confirm: "Are you sure?"} %></li>
