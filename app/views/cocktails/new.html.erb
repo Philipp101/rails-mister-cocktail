@@ -3,6 +3,7 @@
       <h1>Enter a new Cocktail, please.</h1>
       <%= simple_form_for(@cocktail) do |f| %>
       <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
       <%= f.submit class: "btn-ghost" %>
       <% end %>
     </div>
