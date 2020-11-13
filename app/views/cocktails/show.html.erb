@@ -1,14 +1,26 @@
-<h1>This is your wonderful Cocktail</h1>
 
+
+<div class= 'banner'>
+    <div class="container">
+<h1>This is your wonderful Cocktail</h1>
 <h2><%= @cocktail.name %></h2>
 <br>
-<ul class="list-group">
+<ul class="list">
 <% @doses.each do |dose| %>
- <li class="list-group-item"><h3><%= Ingredient.find(dose.ingredient_id).name %> - <%= dose.description %></h3>    <%= link_to "delete", dose_path(dose[:id]), method: :delete, data: { confirm: "Are you sure?"} %></li>
+ <li class="list-item"><p><%= Ingredient.find(dose.ingredient_id).name %> - <%= dose.description %></p>    <%= link_to "delete", dose_path(dose[:id]), method: :delete, data: { confirm: "Are you sure?"} %></li>
  <% end %>
 </ul>
 <br>
 
-<%= link_to "back", cocktails_path  %>
+<div class="btn btn-ghost">
+  <%= link_to "back", cocktails_path  %>
+</div>
+<div class="btn btn-ghost">
 <%= link_to "add ingredient", new_cocktail_dose_path(@cocktail)  %>
+  </div>
+    </div>
+  </div>
+
+
+
 
