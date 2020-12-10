@@ -8,13 +8,15 @@
 require 'json'
 require 'open-uri'
 puts "clearing data"
-Ingredient.delete_all
+Cocktail.delete_all
 puts "generating ingredients"
 
-url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
-ingr_serialized = open(url).read
-ingrs = JSON.parse(ingr_serialized)
-ingrs["drinks"].each do |ingr|
-  Ingredient.create(name: ingr["strIngredient1"])
+url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+
+
+drinks_serialized = open(url).read
+drinks = JSON.parse(drinks_serialized)
+drinks["drinks"].each do |drink|
+  Cocktail.create(name: drink["strDrink"])
 end
 puts "done"
