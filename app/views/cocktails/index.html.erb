@@ -1,22 +1,25 @@
-<div>
+<div class="container ml-0">
   <div class= 'banner'>
-    <div class="container">
-      <h1>Welcome to Wonderful Cocktails</h1>
-      <p>Dive in in our amazing collection of luxury recipes</p>
+    <div>
+      <h1>Welcome to "Wonderful Cocktails"</h1>
+      <p>Dive in in our amazing collection of luxury recipes or create your own!</p>
         <div class="btn btn-ghost">
           <%= link_to "create new Cocktail", new_cocktail_path  %>
         </div>
     </div>
   </div>
+  <br>
+  <ul><div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <% if cocktail.photo.attached? %>
+          <li><div class="my-card-background" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path cocktail.photo.key %>)">
+            <%= link_to cocktail.name, cocktail_path(cocktail), class: "my-card" %>
+          </div></li>
+      <% else %>
+          <li><div class="my-card-background" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4))">
+            <%= link_to cocktail.name, cocktail_path(cocktail), class: "my-card" %>
+          </div></li>
+      <% end %>
+    <% end %>
+  </div></ul>
 </div>
-
-<ul class="list">
-<% @cocktails.each do |cocktail| %>
-  <li class="list-item"><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-<% end %>
-</ul>
-
-<br>
-<br>
-
-
